@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Browser Extension Manager</title>
+    <link rel="icon" href="images/favicon-32x32.png" type="image" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="header">
+      <img src="images/logo.svg" alt="extension logo" />
+      <button class="btn">
+        <img src="images/icon-sun.svg" alt="sun logo" />
+      </button>
+    </div>
+
+    <main class="main" action="">
+      <div class="top-container">
+        <h1>Extensions List</h1>
+        <div class="filter-container">
+          <button class="btn" id="all-btn">All</button>
+          <button class="btn" id="active-btn">Active</button>
+          <button class="btn" id="inactive-btn">Inactive</button>
+        </div>
+      </div>
+
+      <div class="extensions-container" id="extensions-container"></div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
