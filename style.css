@@ -1,19 +1,31 @@
 :root {
     --neutral-900: hsl(227, 75%, 14%);
-    --neutral-800: hsl(226, 25%, 17%);
-    --neutral-700: hsl(225, 23%, 24%);
-    --neutral-600: hsl(226, 11%, 37%);
-    --neutral-300: hsl(0, 0%, 78%);
+    --extension-color: hsl(226, 25%, 17%);
+    --header-color: hsl(225, 23%, 24%);
+    --btn-color: hsl(226, 11%, 37%);
+    --text-color: hsl(0, 0%, 78%);
     --neutral-200: hsl(217, 61%, 90%);
     --neutral-100: hsl(0, 0%, 93%);
-    --neutral-0: hsl(200, 60%, 99%);
+    --title-color: hsl(200, 60%, 99%);
 
     --red-400: hsl(3, 86%, 64%);
-    --red-500: hsl(3, 71%, 56%);
+    --red: hsl(3, 71%, 56%);
     --red-700: hsl(3, 77%, 44%);
 
-    --light-gradient: linear-gradient(180deg, #EBF2FC 0%, #EEF8F9 100%);
-    --dark-gradient: linear-gradient(180deg, #040918 0%, #091540 100%);
+    --bg-color: linear-gradient(180deg, #040918 0%, #091540 100%);
+}
+
+.light-mode {
+    --bg-color: linear-gradient(180deg, #EBF2FC 0%, #EEF8F9 100%);
+    --extension-color: hsl(200, 60%, 99%);
+    --header-color: hsl(200, 60%, 99%);
+    --title-color: hsl(227, 75%, 14%);
+    --paragraph-color: hsl(0, 0%, 78%);
+    --red: hsl(3, 77%, 44%);
+    --btn-color: hsl(0, 0%, 78%);
+    --text-color: hsl(226, 11%, 37%);
+
+
 }
 
 *,
@@ -32,7 +44,7 @@
 body {
     font-family: 'MyFont', sans-serif;
     font-size: 16px;
-    background: var(--dark-gradient);
+    background: var(--bg-color);
 }
 
 .header {
@@ -41,7 +53,7 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--neutral-800);
+    background-color: var(--header-color);
     padding: 5px;
     border-radius: 10px;
     margin: 20px auto;
@@ -59,7 +71,7 @@ body {
 }
 
 h1 {
-    color: var(--neutral-0);
+    color: var(--title-color);
 }
 
 .top-container {
@@ -85,9 +97,10 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: var(--neutral-700);
+    background-color: var(--extension-color);
     border-radius: 20px;
     padding: 15px;
+    box-shadow: 0px 1px 1px 1px var(--paragraph-color);
 }
 
 .name-and-logo-container {
@@ -102,13 +115,13 @@ h1 {
 
 .name-and-logo-container p {
     font-weight: 700;
-    color: var(--neutral-0);
+    color: var(--title-color);
 }
 
 p span {
     display: block;
     font-weight: 400;
-    color: var(--neutral-300);
+    color: var(--text-color);
     margin-top: 5px;
 }
 
@@ -117,11 +130,21 @@ p span {
     padding: 5px 10px;
     font-family: 'MyFont', sans-serif;
     font-weight: 500;
-    background-color: var(--neutral-700);
-    color: var(--neutral-100);
-    border: 2px solid var(--neutral-600);
+    font-size: 16px;
+    background-color: var(--extension-color);
+    color: var(--title-color);
+    border: 2px solid var(--btn-color);
     cursor: pointer;
 }
+
+.btn:focus, .btn:hover {
+    background-color: var(--red);
+    color: var(--extension-color);
+}
+
+
+
+
 
 .button-container {
     display: flex;
@@ -146,7 +169,7 @@ p span {
     cursor: pointer;
     top: 0; left: 0;
     bottom: 0; right: 0;
-    background-color: var(--neutral-600);
+    background-color: var(--btn-color);
     border-radius: 22px;
     transition: 0.4s;
 }
@@ -163,7 +186,7 @@ p span {
 }
 
 input:checked + .slider {
-    background-color: var(--red-500);
+    background-color: var(--red);
 }
 
 input:checked + .slider::before {

@@ -3,19 +3,20 @@ const activeBtn = document.getElementById('active-btn');
 const inactiveBtn = document.getElementById('inactive-btn');
 const extensionsContainer = document.getElementById('extensions-container');
 const stored = JSON.parse(localStorage.getItem("extensions"));
+const lightOrDarkMode = document.getElementById("light-or-dark-mode-btn");
 
 const extensions = stored || [
     {
         id: 1, name: "Devlens",
         icon: "images/logo-devlens.svg",
         description: "Quickly inspect page layouts and visualize element boundaries.",
-        active: false,
+        active: true,
     },
     {
         id: 2, name: "StyleSpy",
         icon: "images/logo-style-spy.svg",
         description: "Instantly analyze and copy CSS from any webpage element.",
-        active: false,
+        active: true,
     },
     {
         id: 3, name: "SpeedBoost",
@@ -27,13 +28,13 @@ const extensions = stored || [
         id: 4, name: "JSONWizard",
         icon: "images/logo-json-wizard.svg",
         description: "Formats, validates, and prettifies JSON responses in-browser.",
-        active: false,
+        active: true,
     },
     {
         id: 5, name: "TabMaster Pro",
         icon: "images/logo-tab-master-pro.svg",
         description: "Organizes browser tabs into groups and sessions.",
-        active: false,
+        active: true,
     },
     {
         id: 6, name: "viewportBuddy",
@@ -45,7 +46,7 @@ const extensions = stored || [
         id: 7, name: "Markup Notes",
         icon: "images/logo-markup-notes.svg",
         description: "Enables annotation and notes directly onto webpages for collaborative debugging.",
-        active: false,
+        active: true,
     },
     {
         id: 8, name: "GridGuides",
@@ -63,7 +64,7 @@ const extensions = stored || [
         id: 10, name: "LinkChecker",
         icon: "images/logo-link-checker.svg",
         description: "Scans and highlights broken links on any page.",
-        active: false,
+        active: true,
     },
     {
         id: 11, name: "DOM Snapshot",
@@ -146,7 +147,28 @@ inactiveBtn.addEventListener("click", () => {
     renderExtenstions("inactive");
     currentFilter = "inactive";
     localStorage.setItem("extensions", JSON.stringify(extensions));
+
 });
+
+let currentMode = "light";
+
+const toggleMode = () => {
+    lightOrDarkMode.innerHTML = "";
+    const html = document.documentElement;
+    html.classList.toggle("light-mode");
+
+    if (currentMode === "light") {
+        lightOrDarkMode.innerHTML = `<img src="images/icon-moon.svg"  alt="moon logo" />`;
+        currentMode = "dark";
+    }
+     else if (currentMode === "dark") {
+        lightOrDarkMode.innerHTML = `<img src="images/icon-sun.svg"  alt="sun logo" />`;
+        currentMode = "light";
+    }
+
+}
+
+lightOrDarkMode.addEventListener("click", toggleMode);
 
 window.onload = () => renderExtenstions();
 
