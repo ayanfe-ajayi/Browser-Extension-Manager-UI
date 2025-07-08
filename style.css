@@ -74,6 +74,11 @@ h1 {
     color: var(--title-color);
 }
 
+.no-extension {
+    color: var(--title-color);
+    font-size: 20px;
+}
+
 .top-container {
     width: 100%;
     display: flex;

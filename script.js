@@ -93,6 +93,11 @@ const renderExtenstions = (filter = "all") => {
     return extensions;
     })
 
+    if (!filteredExtension.length) {
+        extensionsContainer.innerHTML = `<p class="no-extension">Nothing here</p>`;
+        return;
+    }
+
     filteredExtension.forEach((ext) => {
     const card = document.createElement("div");
     card.className = "extension-wrapper";
@@ -100,27 +105,27 @@ const renderExtenstions = (filter = "all") => {
     <div class="name-and-logo-container">
             <img src="${ext.icon}" alt="${ext.name}" />
             <p>
-              ${ext.name}
-              <span>${ext.description}</span>
+            ${ext.name}
+            <span>${ext.description}</span>
             </p>
-          </div>
-          <div class="button-container">
+        </div>
+        <div class="button-container">
             <button class="btn" onclick = "removeExtension(${ext.id})">Remove</button>
             <label class="switch">
-              <input class="checkbox" type="checkbox" ${ext.active? "checked" : ""} onchange = "toggleExtension(${ext.id}, this.checked)" />
-              <span class="slider"></span>
+        <input class="checkbox" type="checkbox" ${ext.active? "checked" : ""} onchange = "toggleExtension(${ext.id}, this.checked)" />
+            <span class="slider"></span>
             </label>
-          </div>
+        </div>
     `;
     extensionsContainer.appendChild(card);
     })
 }
 
 const toggleExtension = (id, isActive) => {
-   const ext = extensions.find(ext => ext.id === id);
-   if(ext) {
+const ext = extensions.find(ext => ext.id === id);
+if(ext) {
     ext.active = isActive;
-   }
+}
 }
 
 const removeExtension = (id) => {
@@ -161,7 +166,7 @@ const toggleMode = () => {
         lightOrDarkMode.innerHTML = `<img src="images/icon-moon.svg"  alt="moon logo" />`;
         currentMode = "dark";
     }
-     else if (currentMode === "dark") {
+    else if (currentMode === "dark") {
         lightOrDarkMode.innerHTML = `<img src="images/icon-sun.svg"  alt="sun logo" />`;
         currentMode = "light";
     }
